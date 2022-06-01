@@ -1,0 +1,13 @@
+{
+    "type": "oracle",
+    "username": "c##ignite",
+    "database": "xe",
+    "password": "ignite",
+    "host": "localhost",
+    "port": 1521,
+    "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+    "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
+    "cli": {
+        "migrationsDir": "./src/shared/infra/typeorm/migrations"
+    }
+}
