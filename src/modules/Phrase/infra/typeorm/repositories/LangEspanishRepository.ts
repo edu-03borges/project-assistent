@@ -5,15 +5,15 @@ import {
 } from "../../../dtos/ILangDTO";
 
 import { getRepository, Repository } from "typeorm";
-import { ILangPortugueseRepository } from "../../../repositories/ILangPortugueseRepository";
-import { LangPortuguese } from "../entities/LangPortuguese";
+import { ILangEspanishRepository } from "../../../repositories/ILangEspanishRepository";
+import { LangEspanish } from "../entities/LangEspanish";
 
-class LangPortugueseRepository implements ILangPortugueseRepository{
+class LangEspanishRepository implements ILangEspanishRepository{
     
-    private repository: Repository<LangPortuguese>;
+    private repository: Repository<LangEspanish>;
     
     constructor() {
-        this.repository = getRepository(LangPortuguese);
+        this.repository = getRepository(LangEspanish);
     }
 
     async create({ question, answer }: IRequestLangDTO): Promise<void> {
@@ -25,8 +25,8 @@ class LangPortugueseRepository implements ILangPortugueseRepository{
         await this.repository.save(phrase);
     }
 
-    async findPhrase({ id, question, answer }: IFindPhraseDTO): Promise<LangPortuguese> {
-
+    async findPhrase({ id, question, answer }: IFindPhraseDTO): Promise<LangEspanish> {
+        
         if(id != undefined) 
             return await this.repository.findOne({ id });
         else if(question != undefined) 
@@ -36,14 +36,16 @@ class LangPortugueseRepository implements ILangPortugueseRepository{
     }
 
     async updatePhrase({ id, question, answer }: IRequestLangUpdateDTO): Promise<void> {
-
+        
         const phrase = await this.findPhrase({ id, question, answer });
 
         if(question != undefined) phrase.question = question;
         if(answer != undefined) phrase.answer = answer;
 
+        phrase.updated_at = new Date();
+
         await this.repository.save(phrase);
     }   
 }
 
-export { LangPortugueseRepository };
+export { LangEspanishRepository };

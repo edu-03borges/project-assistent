@@ -2,6 +2,8 @@ import { inject, injectable } from "tsyringe";
 import { ILangEnglishRepository } from "../../repositories/ILangEnglishRepository";
 import { ILangEspanishRepository } from "../../repositories/ILangEspanishRepository";
 import { ILangPortugueseRepository } from "../../repositories/ILangPortugueseRepository";
+import languages from "../../../../config/languages/languages";
+import { ServerError } from "../../../../shared/errors/ServerError";
 
 interface IRequest {
     language: number;
@@ -11,6 +13,8 @@ interface IRequest {
 
 @injectable()
 class CreatePhraseUseCase {
+
+    private langPhrase: any;
 
     constructor(
         @inject("LangEnglishRepository")
@@ -23,19 +27,30 @@ class CreatePhraseUseCase {
 
     async execute({ language, question, answer }: IRequest): Promise<void> {
 
+        if(question!=undefined) question = question.toLowerCase();
+        if(answer!=undefined) answer = answer.toLowerCase();
+
         switch(language) {
-            case 0:
-                await this.langPortugueseRepository.create({ question, answer });
+            case languages.portuguese:
+                this.langPhrase = this.langPortugueseRepository;
                 break;
-            case 1:
-                await this.langEnglishRepository.create({ question, answer });
+            case languages.english:
+                this.langPhrase = this.langEnglishRepository;
                 break;
-            case 2:
-                await this.langEspanishRepository.create({ question, answer });
+            case languages.espanish:
+                this.langPhrase = this.langEspanishRepository;
                 break;
             default:
-                throw new Error("Value Invalid!");
+                throw new ServerError("Value Invalid!");
         }
+
+        const phraseAlredyExists = await this.langPhrase.findPhrase({ question });
+
+        if(phraseAlredyExists) {
+            throw new ServerError("This phrase alredy exists!");
+        }
+
+        await this.langPhrase.create({ question, answer });
     }
 }
 

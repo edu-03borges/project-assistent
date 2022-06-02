@@ -1,3 +1,3 @@
 import { app } from "./app";
 
-app.listen(9512, () => console.log("Server Running..."));
+app.listen(9512, () => console.log(new Date(), "- Server Running..."));

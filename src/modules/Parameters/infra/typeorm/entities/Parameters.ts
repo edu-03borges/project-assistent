@@ -1,26 +1,20 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
-@Entity("ap_informations")
-class ap_informations {
+@Entity("ap_parameters")
+class Parameters {
 
     @PrimaryColumn()
     id?: string;
 
     @Column()
-    name: string;
+    language: number;
 
     @Column()
-    age: number;
+    select_ai: number;
 
     @Column()
-    father: string;
-
-    @Column()
-    mother: string;
-
-    @Column()
-    live: string;
+    updated_at: Date;
 
     @CreateDateColumn()
     created_at: Date;
@@ -32,4 +26,4 @@ class ap_informations {
     }
 }
 
-export { ap_informations };
+export { Parameters };

@@ -1,9 +1,13 @@
 import { container } from "tsyringe";
-import { LangEnglishRepository } from "../../modules/accounts/infra/typeorm/repositories/LangEnglishRepository";
-import { LangEspanishRepository } from "../../modules/accounts/infra/typeorm/repositories/LangEspanishRepository";
-import { LangPortugueseRepository } from "../../modules/accounts/infra/typeorm/repositories/LangPortugueseRepository";
-import { ILangEnglishRepository } from "../../modules/accounts/repositories/ILangEnglishRepository";
-import { ILangPortugueseRepository } from "../../modules/accounts/repositories/ILangPortugueseRepository";
+import { LangEnglishRepository } from "../../modules/Phrase/infra/typeorm/repositories/LangEnglishRepository";
+import { LangEspanishRepository } from "../../modules/Phrase/infra/typeorm/repositories/LangEspanishRepository";
+import { LangPortugueseRepository } from "../../modules/Phrase/infra/typeorm/repositories/LangPortugueseRepository";
+import { ParametersRepository } from "../../modules/Parameters/infra/typeorm/repositories/ParametersRepository";
+import { ILangEnglishRepository } from "../../modules/Phrase/repositories/ILangEnglishRepository";
+import { ILangPortugueseRepository } from "../../modules/Phrase/repositories/ILangPortugueseRepository";
+import { IParametersRepository } from "../../modules/Parameters/repositories/IParametersRepository";
+import { IUsersRepository } from "../../modules/Accounts/repositories/IUsersRepository";
+import { UsersRepository } from "../../modules/Accounts/infra/typeorm/repositories/UsersRepository";
 
 container.registerSingleton<ILangEnglishRepository>(
     "LangEnglishRepository",
@@ -19,4 +23,17 @@ container.registerSingleton<ILangPortugueseRepository>(
     "LangPortugueseRepository",
     LangPortugueseRepository
 )
+
+container.registerSingleton<IParametersRepository>(
+    "ParametersRepository",
+    ParametersRepository
+)
+
+container.registerSingleton<IUsersRepository>(
+    "UsersRepository",
+    UsersRepository
+)
+
+
+
 

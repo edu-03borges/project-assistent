@@ -1,4 +1,6 @@
 import { inject, injectable } from "tsyringe";
+import languages from "../../../../config/languages/languages";
+import { ServerError } from "../../../../shared/errors/ServerError";
 import { ILangEnglishRepository } from "../../repositories/ILangEnglishRepository";
 import { ILangEspanishRepository } from "../../repositories/ILangEspanishRepository";
 import { ILangPortugueseRepository } from "../../repositories/ILangPortugueseRepository";
@@ -12,6 +14,9 @@ interface IRequest {
 
 @injectable()
 class UpdatePhraseUseCase {
+
+    private langPhrase: any;
+
     constructor(
         @inject("LangEnglishRepository")
         private langEnglishRepository: ILangEnglishRepository,
@@ -23,19 +28,30 @@ class UpdatePhraseUseCase {
 
     async execute({ language, id, question, answer }: IRequest) {
 
+        if(question!=undefined) question = question.toLowerCase();
+        if(answer!=undefined) answer = answer.toLowerCase();
+
         switch(language) {
-            case 0:
-                await this.langPortugueseRepository.updatePhrase({ id, question, answer });
+            case languages.portuguese:
+                this.langPhrase = this.langPortugueseRepository;
                 break;
-            case 1:
-                await this.langEnglishRepository.updatePhrase({ id, question, answer });
+            case languages.english:
+                this.langPhrase = this.langEnglishRepository;
                 break;
-            case 2:
-                await this.langEspanishRepository.updatePhrase({ id, question, answer });
+            case languages.espanish:
+                this.langPhrase = this.langEspanishRepository;
                 break;
             default:
-                throw new Error("Value Invalid!");
+                throw new ServerError("Value Invalid!");
         }
+
+        const phraseAlredyExists = await this.langPhrase.findPhrase({ id });
+
+        if(!phraseAlredyExists) {
+            throw new ServerError("This phrase not exists!");
+        }
+
+        await this.langPhrase.updatePhrase({ id, question, answer });
 
     }
 }

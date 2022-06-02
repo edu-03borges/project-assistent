@@ -42,6 +42,8 @@ class LangEnglishRepository implements ILangEnglishRepository{
         if(question != undefined) phrase.question = question;
         if(answer != undefined) phrase.answer = answer;
 
+        phrase.updated_at = new Date();
+
         await this.repository.save(phrase);
     }   
 }

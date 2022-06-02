@@ -5,11 +5,11 @@ import { GetPhraseUseCase } from "./GetPhraseUseCase";
 class GetPhraseController {
     async handle(request: Request, response: Response): Promise<Response> {
 
-        const { language, question } = request.body;
+        const { question } = request.body;
 
         const getPhraseUseCase = container.resolve(GetPhraseUseCase);
 
-       const phrase = await getPhraseUseCase.execute({ language, question });
+        const phrase = await getPhraseUseCase.execute({ question });
 
         return response.json(phrase);
     }

@@ -93,6 +93,11 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                     type: "number"
                 },
                 {
+                    name: "updated_at",
+                    type: "date",
+                    default: "sysdate"
+                },
+                {
                     name: "created_at",
                     type: "date",
                     default: "sysdate"
