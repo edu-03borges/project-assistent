@@ -11,7 +11,7 @@ class GetPhraseController {
 
         const phrase = await getPhraseUseCase.execute({ question });
 
-        return response.json(phrase);
+        return response.json(phrase.answer);
     }
 }
 

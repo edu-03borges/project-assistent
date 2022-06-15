@@ -1,0 +1,6 @@
+
+{
+    "API": {
+        "host": "http://localhost:9512/phrase/get"
+    }
+}
