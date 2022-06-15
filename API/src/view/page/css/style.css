@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+    background: #E1E9F4;
+}
+
 .origin {
     width: 100%;
     height: 90vh;
@@ -12,23 +18,55 @@
     position: absolute;  
 }
 
-.login form input {
+.login div input {
     display: block;
     width: 100%;
 
     margin: 10px 0;
-    padding: 15px 20px;
+    padding: 18px 20px;
+
+    border: 0;
+    border-radius: 3px;
+
+    outline: 0;
+    
 }
 
-.login form button {
+.login div button {
     width: 121%;
 
     margin: 5px 0;
     padding: 15px 20px;
+
+    border: 0;
+    border-radius: 3px;
+    
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    background: linear-gradient(120deg, #52b1ff, #2387da);
 }
 
-.options {
+.options button {
+    display: block;
+    width: 100%;
 
+    margin: 10px 0;
+    padding: 18px 50px;
+
+    border: 0;
+    border-radius: 3px;
+
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    background: linear-gradient(120deg, #52b1ff, #2387da);
 }
 
 .hidden {
