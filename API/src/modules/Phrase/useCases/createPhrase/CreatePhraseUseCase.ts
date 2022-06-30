@@ -30,7 +30,7 @@ class CreatePhraseUseCase {
         if(question!=undefined) question = question.toLowerCase();
         if(answer!=undefined) answer = answer.toLowerCase();
 
-        switch(language) {
+        switch(Number(language)) {
             case languages.portuguese:
                 this.langPhrase = this.langPortugueseRepository;
                 break;

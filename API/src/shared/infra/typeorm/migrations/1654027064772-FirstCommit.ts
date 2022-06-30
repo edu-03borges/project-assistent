@@ -25,13 +25,13 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                 },
                 {
                     name: "is_admin",
-                    type: "number",
+                    type: "numeric",
                     default: 0
                 },
                 {
                     name: "created_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 }]
             })
         );
@@ -50,7 +50,7 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                 },
                 {
                     name: "age",
-                    type: "number",
+                    type: "numeric",
                     isNullable: true
                 },
                 {
@@ -70,8 +70,8 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                 },
                 {
                     name: "created_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 }]
             })
         );
@@ -86,21 +86,21 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                 },
                 {
                     name: "language",
-                    type: "number"
+                    type: "numeric"
                 },
                 {
                     name: "select_ai",
-                    type: "number"
+                    type: "numeric"
                 },
                 {
                     name: "updated_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 },
                 {
                     name: "created_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 }]
             })
         );
@@ -123,13 +123,13 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                 },
                 {
                     name: "updated_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 },
                 {
                     name: "created_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 }]
             })
         );
@@ -152,13 +152,13 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                 },
                 {
                     name: "updated_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 },
                 {
                     name: "created_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 }]
             })
         );
@@ -181,13 +181,13 @@ export class FirstCommit1654027064772 implements MigrationInterface {
                 },
                 {
                     name: "updated_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 },
                 {
                     name: "created_at",
-                    type: "date",
-                    default: "sysdate"
+                    type: "timestamp",
+                    default: "now()"
                 }]
             })
         );

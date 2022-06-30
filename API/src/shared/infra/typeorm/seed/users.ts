@@ -6,7 +6,7 @@ import { ServerError } from "../../../errors/ServerError";
 
 export default async function users(): Promise<void> {
 
-    const connection = await queryRunner();
+    const connection = await queryRunner("localhost");
 
     const normaluserId = uuidv4();
     const normalUserPassword = await hash("batman", 8);
@@ -40,7 +40,7 @@ export default async function users(): Promise<void> {
     }
 
     await connection.query(`
-        INSERT INTO "ap_users" ("id", "name", "email", "password") VALUES (
+        INSERT INTO ap_users (id, name, email, password) VALUES (
             '${normalUser.id}', 
             '${normalUser.name}',
             '${normalUser.email}',
@@ -48,7 +48,7 @@ export default async function users(): Promise<void> {
     )`);
 
     await connection.query(`
-    INSERT INTO "ap_users" ("id", "name", "email", "is_admin", "password") VALUES (
+    INSERT INTO ap_users (id, name, email, "is_admin", password) VALUES (
         '${adminUser.id}',
         '${adminUser.name}',
         '${adminUser.email}',

@@ -5,6 +5,5 @@ dirTemp = os.path.abspath(os.getcwd())
 
 sys.path.append('{}\\src\\modules\\infra\\speechToText'.format(dirTemp))
 
-import SpeechRecognition
+print('\n\n',dirTemp, '\n\n')
 
-SpeechRecognition.recognize_from_microphone()

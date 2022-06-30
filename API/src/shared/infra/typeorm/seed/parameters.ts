@@ -5,7 +5,7 @@ import { ServerError } from "../../../errors/ServerError";
 
 export default async function users(): Promise<void> {
     
-    const connection = await queryRunner();
+    const connection = await queryRunner("localhost");
 
     const id = uuidv4();
 
@@ -18,5 +18,5 @@ export default async function users(): Promise<void> {
     }
 
     connection.query(`
-    INSERT INTO "ap_parameters" ("id", "language", "select_ai") VALUES ('${id}', 0,0)`);
+    INSERT INTO ap_parameters (id, language, select_ai) VALUES ('${id}', 0,0)`);
 }

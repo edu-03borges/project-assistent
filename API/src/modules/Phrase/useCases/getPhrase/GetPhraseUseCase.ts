@@ -32,7 +32,7 @@ class GetPhraseUseCase {
 
         const { language } = await this.parametersRepository.findParameters();
 
-        switch(language) {
+        switch(Number(language)) {
             case languages.portuguese:
                 this.langPhrase = this.langPortugueseRepository;
                 break;

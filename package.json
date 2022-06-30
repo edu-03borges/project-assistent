@@ -1,0 +1,20 @@
+{
+  "name": "project-assistent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "startPy": "python ./Speech/src/shared/infra/app/app.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edu-03borges/project-assistent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edu-03borges/project-assistent/issues"
+  },
+  "homepage": "https://github.com/edu-03borges/project-assistent#readme"
+}

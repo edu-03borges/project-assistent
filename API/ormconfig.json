@@ -1,10 +1,10 @@
 {
-    "type": "oracle",
-    "username": "c##ignite",
+    "type": "postgres",
+    "username": "c##assistent",
     "database": "xe",
-    "password": "ignite",
+    "password": "assistent",
     "host": "localhost",
-    "port": 1521,
+    "port": 5432,
     "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
     "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
     "cli": {
